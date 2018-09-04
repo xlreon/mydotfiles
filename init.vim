@@ -24,7 +24,6 @@ set hlsearch
 set incsearch
 
 " Increase history for UNDO and REDO commands
-set history=1000
 set undolevels=1000
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set title
@@ -87,4 +86,3 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'scrooloose/nerdcommenter'
 call plug#end()
 colorscheme ayu 
-
