@@ -5,9 +5,8 @@ filetype plugin indent on
 filetype plugin on
 set mouse=a
 set termguicolors
-colorscheme monokai_pro
-set omnifunc=syntaxcomplete#Complete
-
+set omnifunc=syntaxcomplete#Complee
+set clipboard=unnamedplus
 set hidden
 set nowrap
 set tabstop=4
@@ -46,16 +45,26 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 let g:airline_theme='dark'
 
+" Purescript specific configuration
+if has('autocmd')
+    autocmd filetype purescript set tabstop=2
+    autocmd filetype purescript set shiftwidth=2
 
+    autocmd filetype purescript nm <buffer> <silent> <leader>a :Papply<CR>
+    autocmd filetype purescript nm <buffer> <silent> <leader>i :Pimport<CR>
+    autocmd filetype purescript nm <buffer> <silent> <leader>g :Pgoto<CR>
+endif
+map <C-n> :NERDTreeToggle<CR>
+nmap <silent> ,r :source $MYVIMRC<CR>
 call plug#begin()
-Plug 'roxma/nvim-completion-manager'
-Plug 'SirVer/ultisnips'
+"Plug 'roxma/nvim-completion-manager'
+"Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'brooth/far.vim'
 Plug  'dracula/vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
@@ -71,5 +80,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'phanviet/vim-monokai-pro'
+Plug 'raichoo/purescript-vim'
+Plug 'frigoeu/psc-ide-vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'ayu-theme/ayu-vim'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
+colorscheme ayu 
 
