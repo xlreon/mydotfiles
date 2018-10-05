@@ -22,7 +22,9 @@ set smartcase
 set smarttab
 set hlsearch
 set incsearch
-
+set tabstop=4
+set shiftwidth=4
+set expandtab
 " Increase history for UNDO and REDO commands
 set history=1000
 set undolevels=1000
@@ -54,7 +56,7 @@ if has('autocmd')
     autocmd filetype purescript nm <buffer> <silent> <leader>i :Pimport<CR>
     autocmd filetype purescript nm <buffer> <silent> <leader>g :Pgoto<CR>
 endif
-map <C-n> :NERDTreeToggle<CR>
+nmap <C-c> :NERDTreeToggle<CR>
 nmap <silent> ,r :source $MYVIMRC<CR>
 call plug#begin()
 "Plug 'roxma/nvim-completion-manager'
@@ -72,9 +74,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
+"Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -82,7 +82,7 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'phanviet/vim-monokai-pro'
 Plug 'raichoo/purescript-vim'
 Plug 'frigoeu/psc-ide-vim'
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 Plug 'ayu-theme/ayu-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/indentLine'
