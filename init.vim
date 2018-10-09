@@ -58,6 +58,8 @@ if has('autocmd')
 endif
 nmap <C-c> :NERDTreeToggle<CR>
 nmap <silent> ,r :source $MYVIMRC<CR>
+nnoremap <S-J> :bp<CR>
+nnoremap <S-K>  :bn<CR>
 call plug#begin()
 "Plug 'roxma/nvim-completion-manager'
 "Plug 'SirVer/ultisnips'
