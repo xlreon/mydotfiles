@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/sidharthsatapathy/.oh-my-zsh
+export ZSH=/Users/sidharth.satapathy/.oh-my-zsh
 export TERM="xterm-256color"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -52,8 +52,7 @@ POWERLEVEL9K_CHANGESET_HASH_LENGTH='7'
 HYPHEN_INSENSITIVE="true"
 
 HIST_STAMPS="dd.mm.yyyy"
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -98,7 +97,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 # Add wisely, as too many plugins slow down shell startup.
 
 source $ZSH/oh-my-zsh.sh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh 
 
 # User configuration
 
