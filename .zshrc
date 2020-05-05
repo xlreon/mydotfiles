@@ -2,70 +2,38 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/sidharthsatapathy/.oh-my-zsh
-export TERM="xterm-256color"
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
+export ZSH="/Users/sidharth/.oh-my-zsh"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="spaceship"
 
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9K_SHORTEN_STRATEGY=truncate_folders
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-plugins=(git wd sudo npm web-search docker macports brew node zsh-autosuggestions)
-
-# POWERLEVEL9K_OS_ICON_BACKGROUND="241"
-# POWERLEVEL9K_OS_ICON_FOREGROUND="223"
-
-POWERLEVEL9K_DIR_HOME_BACKGROUND="92"
-# 196 - red 202 - orange 208 - light orange 214 - lighter orange 220 - oragish yellow 226 - yellow 190 - yellowish green 154 - green 118 - light green 82 - deep light green 46 - deep green
-# 124 - dark red 130 - dark brown 136 - brown 142 - slime brown 148 - slime green 112 - pale green 76 - green 40 - deep green 34 - dark green 28 - deeper green 22 - deepest darkest green
-# 88 - deepest red 94 - deep brown 100 - odd yellow brown 106 - slime green 70 - green 34 - green 28 - dark green 22 - deepest darkest green
-POWERLEVEL9K_DIR_HOME_FOREGROUND="300"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="92"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="300"
-
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='220'
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='237'
-
-
-POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='241'
-POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='223'
-
-# Git
-
-POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-stash git-remotebranch)
-
-# Show last commit hash
-POWERLEVEL9K_SHOW_CHANGESET='true'
-POWERLEVEL9K_CHANGESET_HASH_LENGTH='7'
-
-# Icons
-# POWERLEVEL9K_VCS_COMMIT_ICON='\uE626 '
-# POWERLEVEL9K_VCS_STAGED_ICON='\u271A'
-# POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uF113 '
-# POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON='\uF171 '
-
-HYPHEN_INSENSITIVE="true"
-
-HIST_STAMPS="dd.mm.yyyy"
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to dikble bi-weekly auto-update checks.
+# Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -86,19 +54,23 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh 
 
 # User configuration
 
@@ -117,9 +89,6 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -129,58 +98,6 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# export NVM_DIR="/Users/sidharthsatapathy/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-# export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-# #export vim=/usr/local/Cellar/vim/bin/vim
-# alias vim=nvim
-# export EDITOR=nvim
-# export GIT_EDITOR=nvim
-# export PATH="$PATH":/Users/sidharthsatapathy/.local/bin
-
-# #for tmux to use 256 colors
-# export TERM=xterm-256color
-# # added psvm path for purescript
-# export PATH=$HOME/.psvm/current/bin:$PATH
-
-# # android sdk
-# export ANDROID_HOME=$HOME/Library/Android/sdk
-# export PATH=$HOME/Library/Android/sdk/tools:$PATH
-# export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
-
-# # haskell
-# export PATH=$HOME/Library/Haskell/bin:$PATH
-# export PATH=$HOME/.cabal/bin:$PATH
-
-# # golang
-# export GOPATH=$HOME/Documents/code/go
-# export PATH=$GOPATH/bin:$PATH
-
-# export SHELL=zsh
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# # postgres
-# alias pg-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
-# alias pg-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
-
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# # this is the armory flags
-# export CFLAGS="-arch x86_64"
-# export ARCHFLAGS="-arch x86_64"
-
-# export PATH=/Users/sidharthsatapathy/.local/bin/luna-studio:$PATH
-
-# for pyenv
-# export PATH="/Users/sidharthsatapathy/.pyenv/bin:$PATH"
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
-
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-# nvim
-alias vim=nvim
-export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/sidharth/.sdkman"
+[[ -s "/Users/sidharth/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/sidharth/.sdkman/bin/sdkman-init.sh"
