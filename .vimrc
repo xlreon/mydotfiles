@@ -12,13 +12,21 @@ Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'frazrepo/vim-rainbow'
 Plug 'preservim/nerdcommenter'
+Plug 'epmatsw/ag.vim'
 call plug#end()
+command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+autocmd VimEnter * WipeReg
+
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+
 au FileType c,cpp,objc,objcpp call rainbow#load()
 let g:airline_powerline_fonts = 1
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 colorscheme gruvbox
+set number
 
 set signcolumn=yes
 
