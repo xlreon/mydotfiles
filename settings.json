@@ -1,0 +1,45 @@
+{
+  "window.zoomLevel": 2,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "files.associations": {
+    "*.tsx": "typescriptreact"
+  },
+  "tslint.configFile": "tslint.json",
+  "workbench.colorTheme": "Dracula Soft",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "Fira Code",
+  "vim.hlsearch": true,
+  "vim.leader": ",",
+  // settings.json
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<space>"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.splitEditor"]
+    },
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": [ "revealInExplorer" ],
+    },
+    {
+      "before": ["<leader>", "r", "f"],
+      "commands": [ "fileutils.renameFile" ]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+        "before": ["<leader>", "c"],
+        "commands": [
+            "editor.action.commentLine",
+            "extension.vim_escape"
+        ],
+    }
+],
+}
