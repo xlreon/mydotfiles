@@ -1,30 +1,30 @@
 call plug#begin("~/.config/nvim/plugged")
-  " Plugin Section
-  Plug 'morhetz/gruvbox'
-  Plug 'preservim/nerdtree'
-  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-  Plug 'Xuyuanp/nerdtree-git-plugin' 
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
-  Plug 'itchyny/lightline.vim'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'w0rp/ale'
-  Plug 'sheerun/vim-polyglot'
-  Plug 'preservim/nerdcommenter'
-  Plug 'ap/vim-css-color'
-  Plug 'tpope/vim-fugitive'
-  Plug 'dyng/ctrlsf.vim'
-  " post install (yarn install | npm install) then load plugin only for editing supported files
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  Plug 'nathanaelkane/vim-indent-guides'
-  Plug 'jreybert/vimagit'
+" Plugin Section
+Plug 'morhetz/gruvbox'
+Plug 'preservim/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'Xuyuanp/nerdtree-git-plugin' 
+Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'w0rp/ale'
+Plug 'sheerun/vim-polyglot'
+Plug 'preservim/nerdcommenter'
+Plug 'ap/vim-css-color'
+Plug 'tpope/vim-fugitive'
+Plug 'dyng/ctrlsf.vim'
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'jreybert/vimagit'
 call plug#end()
 
 let g:indent_guides_enable_on_vim_startup = 1
 
 if (has("termguicolors"))
- set termguicolors
+  set termguicolors
 endif
 set background=dark
 colorscheme gruvbox
@@ -88,40 +88,40 @@ let g:WebDevIconsDefaultFileSymbolColor = s:blue
 
 " NERDTree Git Plugin
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+      \ "Modified"  : "✹",
+      \ "Staged"    : "✚",
+      \ "Untracked" : "✭",
+      \ "Renamed"   : "➜",
+      \ "Unmerged"  : "═",
+      \ "Deleted"   : "✖",
+      \ "Dirty"     : "✗",
+      \ "Clean"     : "✔︎",
+      \ 'Ignored'   : '☒',
+      \ "Unknown"   : "?"
+      \ }
 
 nnoremap <C-p> :Files<CR>
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit'
-  \}
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \}
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 " Lightline
 let g:lightline = {
-  \     'colorscheme': 'powerlineish',
-  \     'active': {
-  \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
-  \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
-  \     }
-  \ }
+      \     'colorscheme': 'powerlineish',
+      \     'active': {
+      \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
+      \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
+      \     }
+      \ }
 
 
 " ALE (Asynchronous Lint Engine)
 let g:ale_fixers = {
- \ 'javascript': ['eslint']
- \ }
+      \ 'javascript': ['eslint']
+      \ }
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
