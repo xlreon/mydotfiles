@@ -15,13 +15,23 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'ap/vim-css-color'
   Plug 'tpope/vim-fugitive'
   Plug 'dyng/ctrlsf.vim'
+  " post install (yarn install | npm install) then load plugin only for editing supported files
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'nathanaelkane/vim-indent-guides'
+  Plug 'jreybert/vimagit'
 call plug#end()
+
+let g:indent_guides_enable_on_vim_startup = 1
 
 if (has("termguicolors"))
  set termguicolors
 endif
 set background=dark
 colorscheme gruvbox
+
+
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 " NERDTree
 let g:NERDTreeShowHidden = 1 
@@ -235,3 +245,12 @@ nnoremap <C-F>o :CtrlSFOpen<CR>
 nnoremap <C-F>t :CtrlSFToggle<CR>
 inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
+nmap     <C-G> <Plug>Magit
+
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
