@@ -107,3 +107,20 @@ source $ZSH/oh-my-zsh.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [ -z "$TMUX" ]; then
+    base_session='my_session'
+    # Create a new session if it doesn't exist
+    tmux has-session -t $base_session || tmux new-session -d -s $base_session
+    # Are there any clients connected already?
+    client_cnt=$(tmux list-clients | wc -l)
+    if [ $client_cnt -ge 1 ]; then
+        session_name=$base_session"-"$client_cnt
+        tmux new-session -d -t $base_session -s $session_name
+        tmux -2 attach-session -t $session_name \; set-option destroy-unattached
+    else
+        tmux -2 attach-session -t $base_session
+    fi
+fi
