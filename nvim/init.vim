@@ -16,9 +16,15 @@ Plug 'ap/vim-css-color'
 Plug 'tpope/vim-fugitive'
 Plug 'dyng/ctrlsf.vim'
 " post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jreybert/vimagit'
+Plug 'Yggdroot/indentLine'
+Plug 'machakann/vim-sandwich'
+Plug 'psliwka/vim-smoothie'
+Plug 'mhinz/vim-startify'
+Plug 'Jorengarenar/vim-MvVis'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 let g:indent_guides_enable_on_vim_startup = 1
@@ -29,9 +35,10 @@ endif
 set background=dark
 colorscheme gruvbox
 
-
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+" when running at every change you may want to disable quickfix
+" let g:prettier#quickfix_enabled = 0
+"
+" autocmd TextChanged *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
 
 " NERDTree
 let g:NERDTreeShowHidden = 1 
@@ -254,3 +261,5 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
+
+" autocmd FileType javascript set formatprg=prettier-eslint\ --stdin
