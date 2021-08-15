@@ -18,7 +18,6 @@ Plug 'dyng/ctrlsf.vim'
 " post install (yarn install | npm install) then load plugin only for editing supported files
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'jreybert/vimagit'
 Plug 'Yggdroot/indentLine'
 Plug 'machakann/vim-sandwich'
 Plug 'psliwka/vim-smoothie'
@@ -27,6 +26,7 @@ Plug 'Jorengarenar/vim-MvVis'
 Plug 'honza/vim-snippets'
 call plug#end()
 
+:let mapleader = ' '
 let g:indent_guides_enable_on_vim_startup = 1
 
 if (has("termguicolors"))
@@ -37,8 +37,8 @@ colorscheme gruvbox
 
 " when running at every change you may want to disable quickfix
 " let g:prettier#quickfix_enabled = 0
-"
-" autocmd TextChanged *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
 
 " NERDTree
 let g:NERDTreeShowHidden = 1 
@@ -225,7 +225,6 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
-
 " Nerd Commenter
 " " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
@@ -239,8 +238,8 @@ let g:NERDToggleCheckAllLines = 1
 let g:NERDSpaceDelims = 1
 " " Map ++ to call NERD Commenter and use iTerm key bindings 
 " " to bind Ctmd+/ to ++
-vmap ++ <plug>NERDCommenterToggle
-nmap ++ <plug>NERDCommenterToggle
+vmap <leader>c <plug>NERDCommenterToggle
+nmap <leader>c <plug>NERDCommenterToggle
 
 
 nmap     <C-F>f <Plug>CtrlSFPrompt
@@ -251,8 +250,6 @@ nmap     <C-F>p <Plug>CtrlSFPwordPath
 nnoremap <C-F>o :CtrlSFOpen<CR>
 nnoremap <C-F>t :CtrlSFToggle<CR>
 inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
-
-nmap     <C-G> <Plug>Magit
 
 set number relativenumber
 
