@@ -24,10 +24,17 @@ Plug 'psliwka/vim-smoothie'
 Plug 'mhinz/vim-startify'
 Plug 'Jorengarenar/vim-MvVis'
 Plug 'honza/vim-snippets'
+Plug 'airblade/vim-gitgutter'
+Plug 'zivyangll/git-blame.vim'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
+
+nnoremap <Leader>bs :<C-u>call gitblame#echo()<CR>
+let g:vim_markdown_conceal = 0
 
 :let mapleader = ' '
 let g:indent_guides_enable_on_vim_startup = 1
+let g:vim_markdown_folding_disabled = 1
 
 if (has("termguicolors"))
   set termguicolors
