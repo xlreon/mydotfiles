@@ -6,6 +6,10 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""  # Disabled in favor of starship
 
+# Enable cursor shape change for vi-mode (must be before oh-my-zsh loads)
+VI_MODE_SET_CURSOR=true
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+
 plugins=(
   git
   vi-mode
@@ -15,6 +19,24 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# --- Vi-mode cursor shapes ---------------------------------------------------
+# Beam (|) in insert mode, Block in normal mode
+_set_cursor_insert() { echo -ne '\e[6 q'; }
+_set_cursor_normal() { echo -ne '\e[2 q'; }
+
+zle-keymap-select() {
+  case $KEYMAP in
+    vicmd)          _set_cursor_normal ;;
+    viins|main|'')  _set_cursor_insert ;;
+  esac
+}
+zle-line-init()   { _set_cursor_insert; }
+zle-line-finish() { _set_cursor_normal; }
+
+zle -N zle-keymap-select
+zle -N zle-line-init
+zle -N zle-line-finish
 
 # --- PATH --------------------------------------------------------------------
 export PATH="$HOME/.local/bin:$PATH"
