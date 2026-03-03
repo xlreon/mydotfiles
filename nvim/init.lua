@@ -309,25 +309,29 @@ require("lazy").setup({
         settings = { Lua = { diagnostics = { globals = { "vim" } } } },
       })
 
-      -- Format on save
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        callback = function()
-          vim.lsp.buf.format({ async = false })
-        end,
-      })
     end,
   },
   {
-    "nvimtools/none-ls.nvim",  -- linting + formatting (replaces ALE)
-    dependencies = "nvim-lua/plenary.nvim",
+    "stevearc/conform.nvim",  -- formatting (replaces none-ls)
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
     config = function()
-      local null_ls = require("null-ls")
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.diagnostics.eslint_d,
-          null_ls.builtins.formatting.prettier,
-          null_ls.builtins.formatting.black,       -- Python
-          null_ls.builtins.diagnostics.ruff,       -- Python fast linter
+      require("conform").setup({
+        formatters_by_ft = {
+          javascript      = { "prettier" },
+          typescript      = { "prettier" },
+          javascriptreact = { "prettier" },
+          typescriptreact = { "prettier" },
+          css             = { "prettier" },
+          html            = { "prettier" },
+          json            = { "prettier" },
+          markdown        = { "prettier" },
+          python          = { "ruff_format" },
+          lua             = { "stylua" },
+        },
+        format_on_save = {
+          timeout_ms = 500,
+          lsp_fallback = true,  -- fall back to LSP if no formatter found
         },
       })
     end,
