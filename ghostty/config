@@ -1,0 +1,62 @@
+# =============================================================================
+# Ghostty config - Sidharth Satapathy (@xlreon)
+# =============================================================================
+
+# --- Font --------------------------------------------------------------------
+font-family = "FiraCode Nerd Font Mono"
+font-size = 16
+font-feature = calt         # ligatures
+font-feature = ss01         # alternate digits
+font-thicken = true         # bolder rendering on Retina
+
+# --- Theme -------------------------------------------------------------------
+theme = "catppuccin-mocha"
+
+# --- Window ------------------------------------------------------------------
+window-padding-x = 12
+window-padding-y = 10
+window-decoration = true
+macos-titlebar-style = "hidden"       # clean minimal titlebar
+macos-option-as-alt = true            # use Option as Alt (essential for zsh/vim)
+background-opacity = 0.95
+background-blur-radius = 20
+
+# --- Cursor ------------------------------------------------------------------
+cursor-style = "bar"
+cursor-style-blink = true
+cursor-color = "#cba6f7"              # mauve from catppuccin
+
+# --- Shell -------------------------------------------------------------------
+shell-integration = "zsh"
+shell-integration-features = "cursor,sudo,title"
+
+# --- Scrollback --------------------------------------------------------------
+scrollback-limit = 10000
+
+# --- Keybindings -------------------------------------------------------------
+# New tab/window
+keybind = cmd+t=new_tab
+keybind = cmd+n=new_window
+keybind = cmd+w=close_surface
+
+# Split panes
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+
+# Navigate splits (Ctrl+h/j/k/l like vim/tmux)
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+l=goto_split:right
+keybind = ctrl+k=goto_split:up
+keybind = ctrl+j=goto_split:down
+
+# Navigate tabs
+keybind = cmd+shift+]= next_tab
+keybind = cmd+shift+[= previous_tab
+
+# Font size
+keybind = cmd+equal=increase_font_size:1
+keybind = cmd+minus=decrease_font_size:1
+keybind = cmd+zero=reset_font_size
+
+# Clear
+keybind = cmd+k=clear_screen

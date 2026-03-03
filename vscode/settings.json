@@ -7,7 +7,10 @@
   "tslint.configFile": "tslint.json",
   "workbench.colorTheme": "Dracula Soft",
   "editor.fontLigatures": true,
-  "editor.fontFamily": "Fira Code",
+  "editor.fontFamily": "FiraCode Nerd Font Mono, Fira Code",
+  "editor.fontSize": 14,
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
+  "terminal.integrated.fontSize": 14,
   "vim.hlsearch": true,
   "vim.leader": ",",
   // settings.json
@@ -42,4 +45,5 @@
         ],
     }
 ],
+"window.commandCenter": true,
 }
