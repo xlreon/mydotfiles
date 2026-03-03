@@ -3,38 +3,41 @@
 # =============================================================================
 
 # --- Font --------------------------------------------------------------------
-font-family = "FiraCode Nerd Font Mono"
+font-family = FiraCode Nerd Font Mono
 font-size = 16
-font-feature = calt         # ligatures
-font-feature = ss01         # alternate digits
-font-thicken = true         # bolder rendering on Retina
+# ligatures
+font-feature = calt
+# alternate digits
+font-feature = ss01
+font-thicken = true
 
 # --- Theme -------------------------------------------------------------------
-theme = "catppuccin-mocha"
+theme = Catppuccin Mocha
 
 # --- Window ------------------------------------------------------------------
 window-padding-x = 12
 window-padding-y = 10
 window-decoration = true
-macos-titlebar-style = "hidden"       # clean minimal titlebar
-macos-option-as-alt = true            # use Option as Alt (essential for zsh/vim)
+macos-titlebar-style = hidden
+macos-option-as-alt = true
 background-opacity = 0.95
 background-blur-radius = 20
 
 # --- Cursor ------------------------------------------------------------------
-cursor-style = "bar"
+cursor-style = bar
 cursor-style-blink = true
-cursor-color = "#cba6f7"              # mauve from catppuccin
+cursor-color = #cba6f7
 
 # --- Shell -------------------------------------------------------------------
-shell-integration = "zsh"
-shell-integration-features = "cursor,sudo,title"
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
 
 # --- Scrollback --------------------------------------------------------------
 scrollback-limit = 10000
 
 # --- Keybindings -------------------------------------------------------------
-# New tab/window
+
+# New tab/window/close
 keybind = cmd+t=new_tab
 keybind = cmd+n=new_window
 keybind = cmd+w=close_surface
@@ -43,20 +46,20 @@ keybind = cmd+w=close_surface
 keybind = cmd+d=new_split:right
 keybind = cmd+shift+d=new_split:down
 
-# Navigate splits (Ctrl+h/j/k/l like vim/tmux)
+# Navigate splits (Ctrl+h/j/k/l — matches vim & tmux muscle memory)
 keybind = ctrl+h=goto_split:left
 keybind = ctrl+l=goto_split:right
 keybind = ctrl+k=goto_split:up
 keybind = ctrl+j=goto_split:down
 
-# Navigate tabs
-keybind = cmd+shift+]= next_tab
-keybind = cmd+shift+[= previous_tab
+# Navigate tabs (cmd+[ and cmd+] are Ghostty defaults, using shift variants)
+keybind = cmd+shift+right_bracket=next_tab
+keybind = cmd+shift+left_bracket=previous_tab
 
 # Font size
 keybind = cmd+equal=increase_font_size:1
 keybind = cmd+minus=decrease_font_size:1
 keybind = cmd+zero=reset_font_size
 
-# Clear
+# Clear scrollback
 keybind = cmd+k=clear_screen
