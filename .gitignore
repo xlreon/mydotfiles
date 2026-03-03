@@ -1,0 +1,4 @@
+.secrets
+*.log
+.DS_Store
+nvim/plugged/

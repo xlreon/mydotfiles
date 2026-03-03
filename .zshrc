@@ -1,126 +1,161 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# =============================================================================
+# .zshrc - Sidharth Satapathy (@xlreon)
+# =============================================================================
 
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/sidharthsatapathy/.oh-my-zsh"
-export BOT_TOKEN="1885149852:AAGSJyzNFnYvHOVqmpdhGoboOpyHpB1ZneA"
-export APPLICATION_CONSUMER_KEY="ZJgZw7ACSq3C8lXGSjE4ZVKML"
-export APPLICATION_CONSUMER_SECRET="aso30pZeBe20obv0dwXisQt5spYFD6oWa5t5e6IIjajtZMVclG"
-export ACCESS_TOKEN="1401043629628481541-FTIAkD4BIt16lPKWdIsJKNDgxTjnQI"
-export ACCESS_TOKEN_SECRET="RU7m4o7Wunu1VsqnAG0ApkSeVLKSiJZ64CezNuYhBzprA"
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# --- Oh-My-Zsh ---------------------------------------------------------------
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME=""  # Disabled in favor of starship
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(
+  git
+  vi-mode
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  zsh-fzf-history-search
+)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# --- PATH --------------------------------------------------------------------
+export PATH="$HOME/.local/bin:$PATH"
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# --- Homebrew (ARM Mac) ------------------------------------------------------
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# --- mise (unified node/python/ruby version manager) ------------------------
+eval "$(mise activate zsh)"
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# --- Starship prompt ---------------------------------------------------------
+eval "$(starship init zsh)"
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# --- zoxide (smart cd, use 'z' instead of 'cd') -----------------------------
+eval "$(zoxide init zsh)"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+# --- fzf ---------------------------------------------------------------------
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git"'
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-if [ -z "$TMUX" ]; then
-    base_session='my_session'
-    # Create a new session if it doesn't exist
-    tmux has-session -t $base_session || tmux new-session -d -s $base_session
-    # Are there any clients connected already?
-    client_cnt=$(tmux list-clients | wc -l)
-    if [ $client_cnt -ge 1 ]; then
-        session_name=$base_session"-"$client_cnt
-        tmux new-session -d -t $base_session -s $session_name
-        tmux -2 attach-session -t $session_name \; set-option destroy-unattached
-    else
-        tmux -2 attach-session -t $base_session
-    fi
+# --- pnpm --------------------------------------------------------------------
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# --- uv (Python package manager) --------------------------------------------
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# --- Secrets (API keys, tokens - NOT committed to git) ----------------------
+# Store all secrets in ~/.secrets - never commit that file!
+[ -f "$HOME/.secrets" ] && source "$HOME/.secrets"
+
+# --- Aliases: Navigation -----------------------------------------------------
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# --- Aliases: Better defaults ------------------------------------------------
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -la --icons --group-directories-first --git'
+alias lt='eza --tree --icons --level=2'
+alias cat='bat --style=plain'
+alias diff='delta'
+
+# --- Aliases: Git ------------------------------------------------------------
+alias g='git'
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add .'
+alias gc='git commit -m'
+alias gca='git commit --amend'
+alias gp='git push'
+alias gpl='git pull'
+alias gb='git branch'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias glog='git log --oneline --graph --decorate'
+alias gd='git diff'
+alias lg='lazygit'
+
+# --- Aliases: npm/pnpm -------------------------------------------------------
+alias ni='pnpm install'
+alias nr='pnpm run'
+alias nd='pnpm run dev'
+alias nb='pnpm run build'
+
+# --- Aliases: Python ---------------------------------------------------------
+alias py='python3'
+alias pip='uv pip'
+alias venv='uv venv'
+
+# --- Aliases: Docker ---------------------------------------------------------
+alias dk='docker'
+alias dkc='docker compose'
+alias dku='docker compose up -d'
+alias dkd='docker compose down'
+alias dkl='docker compose logs -f'
+
+# --- Aliases: Editor ---------------------------------------------------------
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias c='clear'
+alias reload='source ~/.zshrc'
+alias zshrc='nvim ~/.zshrc'
+
+# --- Aliases: Network --------------------------------------------------------
+alias ip='curl -s ifconfig.me'
+alias ports='lsof -i -P -n | grep LISTEN'
+
+# --- Aliases: Claude Code ----------------------------------------------------
+alias ai='claude'
+
+# --- Functions ---------------------------------------------------------------
+
+# Create directory and cd into it
+mkcd() { mkdir -p "$1" && cd "$1"; }
+
+# Quick Next.js project
+new-next() {
+  pnpm create next-app@latest "$1" --typescript --tailwind --eslint --app --src-dir
+}
+
+# Quick Python project with uv
+new-py() {
+  mkdir "$1" && cd "$1" && uv init && uv venv && source .venv/bin/activate
+}
+
+# Open current GitHub repo in browser
+ghopen() {
+  local remote
+  remote=$(git remote get-url origin 2>/dev/null)
+  if [ -n "$remote" ]; then
+    open "${remote/git@github.com:/https://github.com/}"
+  fi
+}
+
+# fzf git branch switcher
+fbr() {
+  local branch
+  branch=$(git branch --all | grep -v HEAD | fzf +m) &&
+  git checkout "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")"
+}
+
+# Kill process on a port
+killport() { lsof -ti :"$1" | xargs kill -9; }
+
+# --- tmux auto-attach (skip for VS Code / Cursor integrated terminals) -------
+if command -v tmux &>/dev/null && [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ] && [ "$TERM_PROGRAM" != "cursor" ]; then
+  base_session='main'
+  tmux has-session -t $base_session 2>/dev/null || tmux new-session -d -s $base_session
+  client_cnt=$(tmux list-clients 2>/dev/null | wc -l)
+  if [ "$client_cnt" -ge 1 ]; then
+    session_name="${base_session}-${client_cnt}"
+    tmux new-session -d -t $base_session -s $session_name
+    tmux -2 attach-session -t $session_name \; set-option destroy-unattached
+  else
+    tmux -2 attach-session -t $base_session
+  fi
 fi
